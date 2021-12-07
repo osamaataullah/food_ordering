@@ -12,14 +12,15 @@ public class Registration{
         String email = sc.nextLine();
         System.out.println("Enter Your  Password");
         String password = sc.nextLine();
-
+        System.out.println("Enter you city");
+        String city = sc.nextLine();
         Database mydb = new Database();
 
-        String[] datakey = {"name", "email", "password"};
-        String[] datavalue = {name, email, password};
+        String[] datakey = {"name", "email", "password","city"};
+        String[] datavalue = {name, email, password, city};
         mydb.insert("user", datakey, datavalue);
 
-        System.out.println("Welcom to Food Ordering (:");
+        System.out.println("Welcome to Food Ordering (:");
         sc.close();
     }
     
