@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Cart {
     private int totalCost, totalEstimatedTime;
@@ -73,7 +72,7 @@ public class Cart {
         System.out.println("---------------------------------------------------------");
         System.out.println("Select an option");
         System.out.println("1. Back to menu\n2. Remove Items from cart\n3. Proceed to checkout\n4. Discard all items\n5. Exit.");
-        int inp = new Scanner(System.in).nextInt();
+        int inp = App.sc.nextInt();
         if(inp == 1){
             Menu m = Menu.getInstance();
             m.view_menu(Login.user_city);
@@ -82,8 +81,79 @@ public class Cart {
             remove_items();
         else if(inp == 3){
             payment payu = new payment();
-            payu.Calculate_Bill();
-            System.out.println("Pay Money");
+            int bill = payu.Calculate_Bill();
+            // System.out.println("Pay Money");
+
+            //Online payment class object
+
+            OnlinePayment userPayment = new OnlinePayment(bill);
+
+
+            System.out.println("Select Payment Mode to continue for online payment 1. UPI \n 2. NETBANKING \n 3. DEBIT CARD \n 4. CREDIT CARD ");
+
+            int onlinePaymentOption = App.sc.nextInt();
+
+            boolean payment_done = false;
+            if(onlinePaymentOption==1){
+                UPI userUPI = new UPI(userPayment.payment);
+                payment_done =  userUPI.makePayment();
+                
+                System.out.println("Processing Your Payment...");
+                try {
+                    Thread.sleep(1000*10);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                if(payment_done){
+                    System.out.println("Payment Done \n Thank you For Your Order.");
+                   
+                }
+                
+            }else if(onlinePaymentOption==2){
+                NetBanking userNetBanking = new NetBanking(userPayment.payment);
+                payment_done = userNetBanking.makePayment();
+                System.out.println("Processing Your Payment...");
+                try {
+                    Thread.sleep(1000*10);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                if(payment_done){
+                    System.out.println("Payment Done \n Thank you For Your Order.");
+                   
+                }
+            }else if(onlinePaymentOption==3){
+                DebitCard user_debit = new DebitCard(userPayment.payment);
+                payment_done = user_debit.makePayment();
+                System.out.println("Processing Your Payment...");
+                try {
+                    Thread.sleep(1000*10);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                if(payment_done){
+                    System.out.println("Payment Done \n Thank you For Your Order.");
+                   
+                }
+            }else{
+                CreditCard user_credit = new CreditCard(userPayment.payment);
+                payment_done = user_credit.makePayment();
+                System.out.println("Processing Your Payment...");
+                try {
+                    Thread.sleep(1000*10);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                if(payment_done){
+                    System.out.println("Payment Done \n Thank you For Your Order.");
+                   
+                }
+            }
+
             }
         else if(inp == 4){
             discard_all();
@@ -112,12 +182,11 @@ public class Cart {
 
     public void remove_items(){
         List<Integer> ids = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
         while(true) {
             System.out.println("Enter item id (menu_id) to remove.");
-            ids.add(sc.nextInt()); sc.nextLine();
+            ids.add(App.sc.nextInt()); App.sc.nextLine();
             System.out.println("Wanna remove more items? (y/n):");
-            String y_n = sc.nextLine();
+            String y_n = App.sc.nextLine();
             if (y_n.equalsIgnoreCase("n"))
                 break;
         }
