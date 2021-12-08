@@ -1,18 +1,18 @@
 package food_ordering;
 
 import java.sql.*;
-import java.util.Scanner;
 public class payment {
     
-    Scanner sc = new Scanner(System.in);
-    public void Calculate_Bill()
+    
+    public int Calculate_Bill()
     {
+        int tcost =0; 
         try{
             Connection myconn = Database.connector();
             String query = "Select m1.price, o1.quantity from menu m1 join orders o1 on m1.menu_id=o1.menu_id where o1.order_status = 'ADDED_TO_CART' AND o1.user_id ="+Login.user_id;
             PreparedStatement ps = myconn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            int tcost =0; 
+            
             while(rs.next())
             {
              tcost = tcost + rs.getInt(1)*rs.getInt(2);   
@@ -27,7 +27,7 @@ public class payment {
             if(c == 3)
             {
                 System.out.println("Enter 1 to use SAVE50 or 2 for SAVE20");
-                int pro = sc.nextInt();
+                int pro = App.sc.nextInt();
                 if(pro ==1)
                 tcost = tcost - 50;
                 else if(pro ==2)
@@ -57,6 +57,7 @@ public class payment {
             System.out.println("Applying delivery fee of Rs. "+10);
             tcost = tcost+10;
             System.out.println("Total Cost to pay "+tcost);
+            
             }
             else
             System.out.println("Insufficient Items please order more food for delivery min "+ (100-tcost) + " rupees more items");
@@ -64,6 +65,7 @@ public class payment {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return tcost;
     }
     
 }
