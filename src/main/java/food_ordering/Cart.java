@@ -80,7 +80,11 @@ public class Cart {
         }
         else if (inp == 2)
             remove_items();
-        else if(inp == 3){/*code for payments*/}
+        else if(inp == 3){
+            payment payu = new payment();
+            payu.Calculate_Bill();
+            System.out.println("Pay Money");
+            }
         else if(inp == 4){
             discard_all();
         }
