@@ -51,7 +51,7 @@ public class payment {
                 ps4.execute();
             }
             System.out.println("Amount after applying promo code = "+tcost);
-            String query1 = "UPDATE orders set order_status = 'payamount' where order_status = 'ADDED_TO_CART'";
+            String query1 = "UPDATE orders set order_status = 'payamount' where order_status = 'ADDED_TO_CART' AND user_id="+Login.user_id;
             PreparedStatement ps1 = myconn.prepareStatement(query1);
             ps1.execute();
             System.out.println("Applying delivery fee of Rs. "+10);

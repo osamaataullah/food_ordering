@@ -84,75 +84,10 @@ public class Cart {
             int bill = payu.Calculate_Bill();
             // System.out.println("Pay Money");
 
-            //Online payment class object
-
-            OnlinePayment userPayment = new OnlinePayment(bill);
-
-
-            System.out.println("Select Payment Mode to continue for online payment 1. UPI \n 2. NETBANKING \n 3. DEBIT CARD \n 4. CREDIT CARD ");
-
-            int onlinePaymentOption = App.sc.nextInt();
-
-            boolean payment_done = false;
-            if(onlinePaymentOption==1){
-                UPI userUPI = new UPI(userPayment.payment);
-                payment_done =  userUPI.makePayment();
-                
-                System.out.println("Processing Your Payment...");
-                try {
-                    Thread.sleep(1000*10);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                if(payment_done){
-                    System.out.println("Payment Done \n Thank you For Your Order.");
-                   
-                }
-                
-            }else if(onlinePaymentOption==2){
-                NetBanking userNetBanking = new NetBanking(userPayment.payment);
-                payment_done = userNetBanking.makePayment();
-                System.out.println("Processing Your Payment...");
-                try {
-                    Thread.sleep(1000*10);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                if(payment_done){
-                    System.out.println("Payment Done \n Thank you For Your Order.");
-                   
-                }
-            }else if(onlinePaymentOption==3){
-                DebitCard user_debit = new DebitCard(userPayment.payment);
-                payment_done = user_debit.makePayment();
-                System.out.println("Processing Your Payment...");
-                try {
-                    Thread.sleep(1000*10);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                if(payment_done){
-                    System.out.println("Payment Done \n Thank you For Your Order.");
-                   
-                }
-            }else{
-                CreditCard user_credit = new CreditCard(userPayment.payment);
-                payment_done = user_credit.makePayment();
-                System.out.println("Processing Your Payment...");
-                try {
-                    Thread.sleep(1000*10);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                if(payment_done){
-                    System.out.println("Payment Done \n Thank you For Your Order.");
-                   
-                }
-            }
+            //DoPayment class object
+            DoPayment dopayment = new DoPayment();
+            dopayment.doPayment(bill);
+            
 
             }
         else if(inp == 4){
