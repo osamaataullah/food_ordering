@@ -13,7 +13,7 @@ public class DoPayment {
         OnlinePayment userPayment = new OnlinePayment(bill);
 
 
-        System.out.println("Select Payment Mode to continue for online payment 1. UPI \n 2. NETBANKING \n 3. DEBIT CARD \n 4. CREDIT CARD ");
+        System.out.println("Select Payment Mode to continue for online payment\n 1. UPI \n 2. NETBANKING \n 3. DEBIT CARD \n 4. CREDIT CARD ");
 
         int onlinePaymentOption = App.sc.nextInt();
 
@@ -62,7 +62,8 @@ public class DoPayment {
                     e.printStackTrace();
                 }
                 System.out.println("Payment Done \n Thank you For Your Order.");
-
+                Track t = new Track();
+                t.display_track_menu();
             }
     }
     

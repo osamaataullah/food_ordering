@@ -13,6 +13,14 @@ public class Cart {
 
     private static Cart instance = null;
 
+    public int getTotalCost() {
+        return totalCost;
+    }
+
+    public int getTotalEstimatedTime() {
+        return totalEstimatedTime;
+    }
+
     public static Cart getInstance(){
         if(instance == null){
             instance= new Cart();
@@ -23,7 +31,7 @@ public class Cart {
 
     public void add_to_cart(List<Integer> item_num, List<Integer> item_qty){
         try {
-            String query = "insert into orders(user_id,menu_id,quantity,order_status,timestamp) values(?,?,?,'ADDED_TO_CART',datetime('now'))";
+            String query = "insert into orders(user_id,menu_id,quantity,order_status,timestamp) values(?,?,?,'ADDED_TO_CART',time('now','localtime'))";
             PreparedStatement ps = myconn.prepareStatement(query);
 
             for( int i = 0 ; i < item_num.size() ; i++){
@@ -33,6 +41,8 @@ public class Cart {
                 ps.execute();
             }
             System.out.println("Items added to cart successfully");
+            item_num.clear();
+            item_qty.clear();
             display_cart();
         }
         catch(Exception e){

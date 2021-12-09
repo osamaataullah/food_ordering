@@ -30,22 +30,23 @@ public class Menu {
         PreparedStatement mystmt = null;
         ResultSet rs = null;
         try {
-            String query = "select menu_id, menu_name, price, estimated_time from menu where restaurant_id in " +
+            String query = "select r.restaurant_name, m.menu_id, m.menu_name, m.price, m.estimated_time from menu as m inner join restaurant as r on m.restaurant_id = r.restaurant_id where r.restaurant_id in "+
                     "(select r.restaurant_id from restaurant r where r.city = \"" + city +"\" )";
             //System.out.println(query);
             mystmt = myconn.prepareStatement(query);
             rs = mystmt.executeQuery();
 
             System.out.println("*****  From restaurants in your area  *****");
-            System.out.println("ID\t" + "menu name\t" + "Price (₹)\t" + "Estimated delivery time");
+            System.out.println("Restaurant\t" + "MenuId\t" + "menu name\t" + "Price (₹)\t" + "Estimated delivery time");
             System.out.println("---------------------------------------------------------");
 
             while (rs.next()) {
-                    System.out.println(rs.getInt("menu_id") + "\t" +
-                            rs.getString("menu_name") + "\t" +
-                            "₹"+ rs.getDouble("price") + "\t" +
-                            rs.getInt("estimated_time") + " mins");
-                }
+                System.out.println(rs.getString("restaurant_name") + "\t" +
+                        rs.getInt("menu_id") + "\t" +
+                        rs.getString("menu_name") + "\t" +
+                        "₹"+ rs.getDouble("price") + "\t" +
+                        rs.getInt("estimated_time") + " mins");
+            }
 
             mystmt.close();
             rs.close();
@@ -87,12 +88,16 @@ public class Menu {
             System.out.println("Adding to cart...");
             Cart crt = Cart.getInstance();
             crt.add_to_cart(item_num, item_qty);
+            item_num.clear();
+            item_qty.clear();
         }
         else if(inp == 2){
             itemSelection();
             System.out.println("Adding to Wishlist...");
             Wishlist wl = Wishlist.getInstance();
             wl.add_to_wishlist(item_num, item_qty);
+            item_num.clear();
+            item_qty.clear();
         }
         else if(inp == 3){
             Cart c = Cart.getInstance();

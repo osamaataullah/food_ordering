@@ -33,6 +33,8 @@ public class Wishlist {
                 ps.execute();
             }
             System.out.println("Items added to Wishlist successfully");
+            item_num.clear();
+            item_qty.clear();
             display_wishlist();
         }
         catch(Exception e){
