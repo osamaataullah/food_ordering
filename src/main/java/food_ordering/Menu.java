@@ -105,7 +105,7 @@ public class Menu {
         } else if (inp == 5) {
             Login login = new Login();
             login.mainMenuPanel();
-        }else{
+        } else {
             System.out.println("Thank you for visiting us! Have a nice day :)");
             System.exit(0);
         }

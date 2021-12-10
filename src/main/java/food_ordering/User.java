@@ -5,13 +5,10 @@ public class User {
     protected static String city;
     protected static String userName;
     protected static String userEmail;
-   
 
     public String getUserCity() {
         return this.city;
     }
-
-    
 
     public int getUser_id() {
         return this.user_id;
@@ -24,7 +21,5 @@ public class User {
     public String getUserName() {
         return this.userName;
     }
-    
-
 
 }

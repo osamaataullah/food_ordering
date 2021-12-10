@@ -1,6 +1,5 @@
 package food_ordering;
 
-
 public class Registration {
 
     public void createNewUser() {

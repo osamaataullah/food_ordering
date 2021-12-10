@@ -21,22 +21,24 @@ public class Cart {
         return totalEstimatedTime;
     }
 
-    public static Cart getInstance(){
-        if(instance == null){
-            instance= new Cart();
+    public static Cart getInstance() {
+        if (instance == null) {
+            instance = new Cart();
         }
         return instance;
     }
-    Cart() {}
 
-    public void add_to_cart(List<Integer> item_num, List<Integer> item_qty){
+    Cart() {
+    }
+
+    public void add_to_cart(List<Integer> item_num, List<Integer> item_qty) {
         try {
             String query = "insert into orders(user_id,menu_id,quantity,order_status,timestamp) values(?,?,?,'ADDED_TO_CART',time('now','localtime'))";
             PreparedStatement ps = myconn.prepareStatement(query);
 
-            for( int i = 0 ; i < item_num.size() ; i++){
+            for (int i = 0; i < item_num.size(); i++) {
                 ps.setInt(1, Login.user_id);
-                ps.setInt(2,item_num.get(i));
+                ps.setInt(2, item_num.get(i));
                 ps.setInt(3, item_qty.get(i));
                 ps.execute();
             }
@@ -44,15 +46,15 @@ public class Cart {
             item_num.clear();
             item_qty.clear();
             display_cart();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void display_cart(){
+    public void display_cart() {
         System.out.println("Loading your cart...");
-        String query = "select m.estimated_time, o.menu_id, m.menu_name, o.quantity, o.quantity * m.price  from orders as o inner join menu as m on o.menu_id = m.menu_id  and o.order_status = 'ADDED_TO_CART' and o.user_id =" + Login.user_id;
+        String query = "select m.estimated_time, o.menu_id, m.menu_name, o.quantity, o.quantity * m.price  from orders as o inner join menu as m on o.menu_id = m.menu_id  and o.order_status = 'ADDED_TO_CART' and o.user_id ="
+                + Login.user_id;
         try {
             System.out.println("ID\t" + "menu name\t" + "Quantity\t" + "Total price");
             System.out.println("---------------------------------------------------------");
@@ -72,8 +74,7 @@ public class Cart {
                             " ₹" + rs.getInt(5));
                 }
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         System.out.println("---------------------------------------------------------");
@@ -81,40 +82,35 @@ public class Cart {
         System.out.println("Estimated Time for delivery: " + totalEstimatedTime + "mins");
         System.out.println("---------------------------------------------------------");
         System.out.println("Select an option");
-        System.out.println("1. Back to Main menu\n2. Remove Items from cart\n3. Proceed to checkout\n4. Discard all items\n5. Exit.");
+        System.out.println(
+                "1. Back to Main menu\n2. Remove Items from cart\n3. Proceed to checkout\n4. Discard all items\n5. Exit.");
         int inp = App.sc.nextInt();
-        if(inp == 1){
-           Login login = new Login();
+        if (inp == 1) {
+            Login login = new Login();
             login.mainMenuPanel();
-        }
-        else if (inp == 2)
+        } else if (inp == 2)
             remove_items();
-        else if(inp == 3){
+        else if (inp == 3) {
             payment payu = new payment();
             int bill = payu.Calculate_Bill();
             // System.out.println("Pay Money");
 
-            //DoPayment class object
+            // DoPayment class object
             DoPayment dopayment = new DoPayment();
             dopayment.doPayment(bill);
-            
 
-            }
-        else if(inp == 4){
+        } else if (inp == 4) {
             discard_all();
-        }
-        else if(inp == 5) {
+        } else if (inp == 5) {
             System.out.println("Thank you for visiting us! Have a nice day :)");
             System.exit(0);
         }
 
-
-
     }
 
-    public void discard_all(){
+    public void discard_all() {
         String query = "delete from orders where user_id = ? and order_status = 'ADDED_TO_CART'";
-        try{
+        try {
             PreparedStatement ps = myconn.prepareStatement(query);
             ps.setInt(1, Login.user_id);
             ps.execute();
@@ -125,22 +121,23 @@ public class Cart {
         display_cart();
     }
 
-    public void remove_items(){
+    public void remove_items() {
         List<Integer> ids = new ArrayList<>();
-        while(true) {
+        while (true) {
             System.out.println("Enter item id (menu_id) to remove.");
-            ids.add(App.sc.nextInt()); App.sc.nextLine();
+            ids.add(App.sc.nextInt());
+            App.sc.nextLine();
             System.out.println("Wanna remove more items? (y/n):");
             String y_n = App.sc.nextLine();
             if (y_n.equalsIgnoreCase("n"))
                 break;
         }
         String query = "delete from orders where user_id = ? and order_status = 'ADDED_TO_CART' and menu_id = ?";
-        try{
+        try {
             PreparedStatement ps = myconn.prepareStatement(query);
-            for(int i = 0; i < ids.size() ; i++) {
+            for (int i = 0; i < ids.size(); i++) {
                 ps.setInt(1, Login.user_id);
-                ps.setInt(2,ids.get(i));
+                ps.setInt(2, ids.get(i));
                 ps.execute();
             }
         } catch (SQLException throwables) {
@@ -149,6 +146,5 @@ public class Cart {
         display_cart();
 
     }
-
 
 }

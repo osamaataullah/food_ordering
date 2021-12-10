@@ -23,11 +23,10 @@ public class Login extends User {
             setUser_city();
             setUserEmail();
             setUserName();
-            System.out.println("Welcome "+super.getUserName());
+            System.out.println("Welcome " + super.getUserName());
 
             mainMenuPanel();
 
-           
         } else {
             System.out.println("User Not Found, Register first");
         }
@@ -43,28 +42,28 @@ public class Login extends User {
         super.city = mydb.getCity(user_id);
     }
 
-   public void  setUserName(){
+    public void setUserName() {
         super.userName = mydb.getName(user_id);
-   }
-
-   public void setUserEmail(){
-       super.userEmail = mydb.getEmail(user_id);
-   }
-
-   public void mainMenuPanel(){
-    System.out.println("Select One of the option below");
-    System.out.println("1. See Restaurants in your city\n2. Go To Your Cart\n3. Go To Your wishlist");
-    int input = App.sc.nextInt();
-    if(input==1){
-        Restaurant restaurant = new Restaurant();
-        restaurant.view_restaurant(super.getUserCity());
-    }else if(input==2){
-        Cart cart = new Cart();
-        cart.display_cart();
-    }else{
-        Wishlist wishlist = new Wishlist();
-        wishlist.display_wishlist();
     }
-   }
+
+    public void setUserEmail() {
+        super.userEmail = mydb.getEmail(user_id);
+    }
+
+    public void mainMenuPanel() {
+        System.out.println("Select One of the option below");
+        System.out.println("1. See Restaurants in your city\n2. Go To Your Cart\n3. Go To Your wishlist");
+        int input = App.sc.nextInt();
+        if (input == 1) {
+            Restaurant restaurant = new Restaurant();
+            restaurant.view_restaurant(super.getUserCity());
+        } else if (input == 2) {
+            Cart cart = new Cart();
+            cart.display_cart();
+        } else {
+            Wishlist wishlist = new Wishlist();
+            wishlist.display_wishlist();
+        }
+    }
 
 }
