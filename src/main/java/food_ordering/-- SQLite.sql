@@ -12,15 +12,15 @@ ALTER TABLE restaurant ADD city_area TEXT DEFAULT "okhla" NOT NULL;
 
 DELETE FROM restaurant where restaurant_name=="";
 
-INSERT INTO restaurant(restaurant_name,city, city_area) VALUES("KFC","Indore","REGAL");
+INSERT INTO restaurant(restaurant_name,city, city_area) VALUES("Dominos","delhi","okhla");
 
 ALTER TABLE user ADD city_area TEXT DEFAULT "okhla" NOT NULL;
 
 CREATE TABLE city_area_distance(city TEXT NOT NULL, area1 TEXT NOT NULL, area2 TEXT NOT NULL, distance INTEGER NOT NULL)
 
-INSERT INTO city_area_distance  VALUES("Indore","Vijay Nagar","Vijay Nagar",0);
+INSERT INTO city_area_distance  VALUES("delhi","okhla","Karol Bagh",10);
 
-INSERT INTO menu(menu_name,price,estimated_time,restaurant_id) VALUES('Burger',200,10,7);
+INSERT INTO menu(menu_name,price,estimated_time,restaurant_id) VALUES('Dominos Pizza',200,10,8);
 
 SELECT * FROM restaurant WHERE city="Indore"
 
