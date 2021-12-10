@@ -58,6 +58,8 @@ class UPI extends OnlinePayment {
     }
 }
 
+// Runtime Polymorphism
+// Inheritance
 class NetBanking extends OnlinePayment {
     public NetBanking(int payment) {
         super(payment);
@@ -98,7 +100,8 @@ class NetBanking extends OnlinePayment {
         return payment_done;
     }
 }
-
+// Runtime Polymorphism
+// Inheritance
 class Cards extends OnlinePayment {
 
     public Cards(int payment) {

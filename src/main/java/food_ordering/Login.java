@@ -1,7 +1,7 @@
 package food_ordering;
 
 import java.util.Scanner;
-
+//inheritance
 public class Login extends User {
 
     Database mydb = new Database();

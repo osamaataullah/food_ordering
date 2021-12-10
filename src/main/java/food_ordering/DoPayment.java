@@ -9,7 +9,7 @@ public class DoPayment {
     public void doPayment(int bill) {
 
         // Online payment class object
-        if (bill >= 100) {
+       
             OnlinePayment userPayment = new OnlinePayment(bill);
 
             System.out.println(
@@ -39,10 +39,7 @@ public class DoPayment {
                 verifyPayment(payment_done);
 
             }
-        } else {
-            Cart mycart = new Cart();
-            mycart.display_cart();
-        }
+         
     }
 
     private void verifyPayment(boolean payment_done) {
