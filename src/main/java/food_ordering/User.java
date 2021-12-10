@@ -1,29 +1,30 @@
 package food_ordering;
 
 public class User {
-    private int user_id;
-    private String city;
+    protected static int user_id;
+    protected static String city;
+    protected static String userName;
+    protected static String userEmail;
+   
 
-    public User(int user_id, String city) {
-        this.user_id = user_id;
-        this.city = city;
+    public String getUserCity() {
+        return this.city;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
+    
 
     public int getUser_id() {
-        return user_id;
+        return this.user_id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public String getUserEmail() {
+        return this.userEmail;
     }
+
+    public String getUserName() {
+        return this.userName;
+    }
+    
 
 
 }

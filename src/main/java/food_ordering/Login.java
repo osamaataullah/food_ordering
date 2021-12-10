@@ -2,34 +2,69 @@ package food_ordering;
 
 import java.util.Scanner;
 
-public class Login{
-    static int user_id;
-    static String user_city;
-    public void user(){
+public class Login extends User {
+
+    Database mydb = new Database();
+
+    public void login() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please Enter Your Email");
         String email = sc.nextLine();
         System.out.println("Enter Your Password");
         String password = sc.nextLine();
 
-        Database mydb = new Database();
-
-        String[] datakey = {"email", "password"};
-        String[] datavalue = {email, password};
+        String[] datakey = { "email", "password" };
+        String[] datavalue = { email, password };
 
         boolean res = mydb.verifyData("user", datakey, datavalue);
-        if(res){
+        if (res) {
             System.out.println("Login Successful");
-            user_city = mydb.getUserCity(user_id);
-            //User usr = new User(user_id, city);
-            Menu m = Menu.getInstance();
-            m.view_menu(user_city);
-        }else{
+            setUser_id(user_id);
+            setUser_city();
+            setUserEmail();
+            setUserName();
+            System.out.println("Welcome "+super.getUserName());
+
+            mainMenuPanel();
+
+           
+        } else {
             System.out.println("User Not Found, Register first");
         }
 
         sc.close();
     }
 
+    private void setUser_id(int user_id) {
+        super.user_id = user_id;
+    }
+
+    public void setUser_city() {
+        super.city = mydb.getCity(user_id);
+    }
+
+   public void  setUserName(){
+        super.userName = mydb.getName(user_id);
+   }
+
+   public void setUserEmail(){
+       super.userEmail = mydb.getEmail(user_id);
+   }
+
+   public void mainMenuPanel(){
+    System.out.println("Select One of the option below");
+    System.out.println("1. See Restaurants in your city\n2. Go To Your Cart\n3. Go To Your wishlist");
+    int input = App.sc.nextInt();
+    if(input==1){
+        Restaurant restaurant = new Restaurant();
+        restaurant.view_restaurant(super.getUserCity());
+    }else if(input==2){
+        Cart cart = new Cart();
+        cart.display_cart();
+    }else{
+        Wishlist wishlist = new Wishlist();
+        wishlist.display_wishlist();
+    }
+   }
 
 }

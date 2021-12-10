@@ -27,7 +27,7 @@ public class Cart {
         }
         return instance;
     }
-    private Cart() {}
+    Cart() {}
 
     public void add_to_cart(List<Integer> item_num, List<Integer> item_qty){
         try {
@@ -66,9 +66,9 @@ public class Cart {
                 while (rs.next()) {
                     totalCost += rs.getInt(5);
                     totalEstimatedTime += rs.getInt(1);
-                    System.out.println(rs.getInt("menu_id") + "\t" +
-                            rs.getString("menu_name") + "\t" +
-                            rs.getDouble("quantity") + "\t" +
+                    System.out.println(rs.getInt("menu_id") + "\t     " +
+                            rs.getString("menu_name") + "\t    " +
+                            rs.getDouble("quantity") + "\t     " +
                             " ₹" + rs.getInt(5));
                 }
             }
@@ -81,11 +81,11 @@ public class Cart {
         System.out.println("Estimated Time for delivery: " + totalEstimatedTime + "mins");
         System.out.println("---------------------------------------------------------");
         System.out.println("Select an option");
-        System.out.println("1. Back to menu\n2. Remove Items from cart\n3. Proceed to checkout\n4. Discard all items\n5. Exit.");
+        System.out.println("1. Back to Main menu\n2. Remove Items from cart\n3. Proceed to checkout\n4. Discard all items\n5. Exit.");
         int inp = App.sc.nextInt();
         if(inp == 1){
-            Menu m = Menu.getInstance();
-            m.view_menu(Login.user_city);
+           Login login = new Login();
+            login.mainMenuPanel();
         }
         else if (inp == 2)
             remove_items();

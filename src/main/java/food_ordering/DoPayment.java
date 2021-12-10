@@ -9,35 +9,39 @@ public class DoPayment {
     public void doPayment(int bill){
         
         //Online payment class object
+        if(bill>=100){
+            OnlinePayment userPayment = new OnlinePayment(bill);
 
-        OnlinePayment userPayment = new OnlinePayment(bill);
 
+            System.out.println("Select Payment Mode to continue for online payment\n 1. UPI \n 2. NETBANKING \n 3. DEBIT CARD \n 4. CREDIT CARD ");
 
-        System.out.println("Select Payment Mode to continue for online payment\n 1. UPI \n 2. NETBANKING \n 3. DEBIT CARD \n 4. CREDIT CARD ");
+            int onlinePaymentOption = App.sc.nextInt();
 
-        int onlinePaymentOption = App.sc.nextInt();
-
-        boolean payment_done = false;
-        if(onlinePaymentOption==1){
-            UPI userUPI = new UPI(userPayment.payment);
-            payment_done =  userUPI.makePayment();
-           verifyPayment(payment_done);
-            
-        }else if(onlinePaymentOption==2){
-            NetBanking userNetBanking = new NetBanking(userPayment.payment);
-            payment_done = userNetBanking.makePayment();
+            boolean payment_done = false;
+            if(onlinePaymentOption==1){
+                UPI userUPI = new UPI(userPayment.payment);
+                payment_done =  userUPI.makePayment();
             verifyPayment(payment_done);
+                
+            }else if(onlinePaymentOption==2){
+                NetBanking userNetBanking = new NetBanking(userPayment.payment);
+                payment_done = userNetBanking.makePayment();
+                verifyPayment(payment_done);
 
-        }else if(onlinePaymentOption==3){
-            DebitCard user_debit = new DebitCard(userPayment.payment);
-            payment_done = user_debit.makePayment();
-            verifyPayment(payment_done);
+            }else if(onlinePaymentOption==3){
+                DebitCard user_debit = new DebitCard(userPayment.payment);
+                payment_done = user_debit.makePayment();
+                verifyPayment(payment_done);
 
+            }else{
+                CreditCard user_credit = new CreditCard(userPayment.payment);
+                payment_done = user_credit.makePayment();
+                verifyPayment(payment_done);
+
+            }
         }else{
-            CreditCard user_credit = new CreditCard(userPayment.payment);
-            payment_done = user_credit.makePayment();
-            verifyPayment(payment_done);
-
+            Cart mycart = new Cart();
+            mycart.display_cart();
         }
     }
 

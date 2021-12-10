@@ -19,7 +19,7 @@ public class Wishlist {
         }
         return instance;
     }
-    private Wishlist() {}
+    Wishlist() {}
 
     public void add_to_wishlist(List<Integer> item_num, List<Integer> item_qty){
         try {
@@ -76,8 +76,8 @@ public class Wishlist {
         //System.out.println("1. Move all to Cart\n2. Remove items\n3. Back to menu");
         int inp = new Scanner(System.in).nextInt();
         if(inp == 1){
-            Menu m = Menu.getInstance();
-            m.view_menu(Login.user_city);
+            Login login = new Login();
+            login.mainMenuPanel();
         }
         else if (inp == 2)
             move_to_cart();

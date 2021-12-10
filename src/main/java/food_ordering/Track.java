@@ -36,9 +36,9 @@ public class Track {
         while(true) {
             System.out.println("Select an option.");
             if(late == false)
-                System.out.println("1. Track Order\n2. Exit.");
+                System.out.println("1. Track Order\n2. Exit.\n5. Back To Main Menu");
             else
-                System.out.println("1. Track Order\n2. Exit.\n3. Cancel Orders\n4. Simulate Delivered");
+                System.out.println("1. Track Order\n2. Exit.\n3. Cancel Orders\n4. Simulate Delivered\n5. Back To Main Menu");
 
             int inp = sc.nextInt();
             if (inp == 1 && late == false) {
@@ -69,11 +69,17 @@ public class Track {
                 System.exit(0);
             }
             else if(inp == 3){
-                //cancel_orders(); //delete records
+                cancel_order(); //delete records
                 System.out.println("Orders cancelled :(\n Any amount deducted will be refunded in next 5 working days.");
             }
-            else if(inp == 4)
+            else if(inp == 4){
                 simulate_delivered();
+            }
+            else{
+                Login login = new Login();
+            login.mainMenuPanel();
+            }
+
 
         }
     }
@@ -156,8 +162,22 @@ public class Track {
     }
 
     public String format(int estimated_time){
+
         int hh = estimated_time / 60;
         int mm = estimated_time % 60;
         return hh + ":" + mm;
+    }
+
+    private void cancel_order(){
+        String query = "update orders set order_status=\"CANCELLED\" where order_status = 'payment_done' and user_id = " + Login.user_id;
+
+        PreparedStatement ps = null;
+        try {
+            ps = myconn.prepareStatement(query);
+            ps.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        display_track_menu();
     }
 }

@@ -20,7 +20,8 @@ public class Database {
         return conn;
     }
 
-    public void insert(String tablename, String[] datakey, String[] datavalue){
+    public boolean insert(String tablename, String[] datakey, String[] datavalue){
+        boolean inserted = false;
         try {
             //Class.forName("org.sqlite.JDBC");
             Connection myconn = Database.connector();
@@ -42,15 +43,18 @@ public class Database {
                 }
             }
             query += " );";
-            System.out.println(query);
+            // System.out.println(query);
 
             PreparedStatement mystmt = myconn.prepareStatement(query);
             mystmt.executeUpdate();
+            inserted=true;
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            inserted=false;
         }
-        System.out.println("Connection Successfull");
+        // System.out.println("Connection Successfull");
+        return inserted;
     }
 
     public Boolean verifyData(String tablename, String[] datakey, String[] datavalue){
@@ -62,7 +66,6 @@ public class Database {
             String query = "SELECT * FROM "+ tablename +";";
             Statement mystmt = myconn.createStatement();
             ResultSet result = mystmt.executeQuery(query);
-            System.out.println("results");
             while(result.next()){
 
                 for(int i=0;i<datakey.length;i++){
@@ -80,7 +83,6 @@ public class Database {
 
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             System.out.println(e.getMessage());
         }
         System.out.println("Connection Successfull");
@@ -88,7 +90,7 @@ public class Database {
         
     }
 
-    public String getUserCity(int user_id) {
+    public String getCity(int user_id) {
         try {
             //Class.forName("org.sqlite.JDBC");
             Connection myconn = Database.connector();
@@ -101,6 +103,38 @@ public class Database {
             e.printStackTrace();
         }
         System.out.println("Error in retrieving city...");
+        return "";
+    }
+
+    public String getName(int user_id) {
+        try {
+            //Class.forName("org.sqlite.JDBC");
+            Connection myconn = Database.connector();
+            String query = "SELECT name FROM user where id = " + user_id + ";";
+            Statement mystmt = myconn.createStatement();
+            ResultSet rs = mystmt.executeQuery(query);
+            return rs.getString("name");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Error in retrieving name...");
+        return "";
+    }
+
+    public String getEmail(int user_id) {
+        try {
+            //Class.forName("org.sqlite.JDBC");
+            Connection myconn = Database.connector();
+            String query = "SELECT email FROM user where id = " + user_id + ";";
+            Statement mystmt = myconn.createStatement();
+            ResultSet rs = mystmt.executeQuery(query);
+            return rs.getString("email");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Error in retrieving email...");
         return "";
     }
 
