@@ -3,23 +3,62 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classfood__ordering_1_1_database_ad03a8be74d8d26f46b0eb31836d8c711}\label{classfood__ordering_1_1_database_ad03a8be74d8d26f46b0eb31836d8c711}} 
-void {\bfseries insert} (String tablename, String\mbox{[}$\,$\mbox{]} datakey, String\mbox{[}$\,$\mbox{]} datavalue)
+boolean \mbox{\hyperlink{classfood__ordering_1_1_database_a3943a37a2d102548fc5e5f598bdce2ac}{insert}} (String tablename, String\mbox{[}$\,$\mbox{]} datakey, String\mbox{[}$\,$\mbox{]} datavalue)
 \item 
-\mbox{\Hypertarget{classfood__ordering_1_1_database_a28503ba4f6b4a1e9af4808562e4948b2}\label{classfood__ordering_1_1_database_a28503ba4f6b4a1e9af4808562e4948b2}} 
-Boolean {\bfseries verify\+Data} (String tablename, String\mbox{[}$\,$\mbox{]} datakey, String\mbox{[}$\,$\mbox{]} datavalue)
+Boolean \mbox{\hyperlink{classfood__ordering_1_1_database_a28503ba4f6b4a1e9af4808562e4948b2}{verify\+Data}} (String tablename, String\mbox{[}$\,$\mbox{]} datakey, String\mbox{[}$\,$\mbox{]} datavalue)
 \item 
-\mbox{\Hypertarget{classfood__ordering_1_1_database_a2daba9d3514cb5702834def48ed3dac9}\label{classfood__ordering_1_1_database_a2daba9d3514cb5702834def48ed3dac9}} 
-String {\bfseries get\+User\+City} (int user\+\_\+id)
+String \mbox{\hyperlink{classfood__ordering_1_1_database_a1d0749068af5f0b248e141b1a129346b}{get\+City}} (int user\+\_\+id)
+\item 
+String \mbox{\hyperlink{classfood__ordering_1_1_database_ac43ba6bec96533457af8462a52030c0a}{get\+Name}} (int user\+\_\+id)
+\item 
+String \mbox{\hyperlink{classfood__ordering_1_1_database_abbab62a6612cee97cecda796d71b41e2}{get\+Email}} (int user\+\_\+id)
 \end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classfood__ordering_1_1_database_a28d67d7936aa9a9ef753305eae8838d9}\label{classfood__ordering_1_1_database_a28d67d7936aa9a9ef753305eae8838d9}} 
-static Connection {\bfseries connector} ()
+static Connection \mbox{\hyperlink{classfood__ordering_1_1_database_a28d67d7936aa9a9ef753305eae8838d9}{connector}} ()
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classfood__ordering_1_1_database_a28d67d7936aa9a9ef753305eae8838d9}\label{classfood__ordering_1_1_database_a28d67d7936aa9a9ef753305eae8838d9}} 
+\index{food\_ordering.Database@{food\_ordering.Database}!connector@{connector}}
+\index{connector@{connector}!food\_ordering.Database@{food\_ordering.Database}}
+\doxysubsubsection{\texorpdfstring{connector()}{connector()}}
+{\footnotesize\ttfamily static Connection food\+\_\+ordering.\+Database.\+connector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classfood__ordering_1_1_database_a1d0749068af5f0b248e141b1a129346b}\label{classfood__ordering_1_1_database_a1d0749068af5f0b248e141b1a129346b}} 
+\index{food\_ordering.Database@{food\_ordering.Database}!getCity@{getCity}}
+\index{getCity@{getCity}!food\_ordering.Database@{food\_ordering.Database}}
+\doxysubsubsection{\texorpdfstring{getCity()}{getCity()}}
+{\footnotesize\ttfamily String food\+\_\+ordering.\+Database.\+get\+City (\begin{DoxyParamCaption}\item[{int}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classfood__ordering_1_1_database_abbab62a6612cee97cecda796d71b41e2}\label{classfood__ordering_1_1_database_abbab62a6612cee97cecda796d71b41e2}} 
+\index{food\_ordering.Database@{food\_ordering.Database}!getEmail@{getEmail}}
+\index{getEmail@{getEmail}!food\_ordering.Database@{food\_ordering.Database}}
+\doxysubsubsection{\texorpdfstring{getEmail()}{getEmail()}}
+{\footnotesize\ttfamily String food\+\_\+ordering.\+Database.\+get\+Email (\begin{DoxyParamCaption}\item[{int}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classfood__ordering_1_1_database_ac43ba6bec96533457af8462a52030c0a}\label{classfood__ordering_1_1_database_ac43ba6bec96533457af8462a52030c0a}} 
+\index{food\_ordering.Database@{food\_ordering.Database}!getName@{getName}}
+\index{getName@{getName}!food\_ordering.Database@{food\_ordering.Database}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily String food\+\_\+ordering.\+Database.\+get\+Name (\begin{DoxyParamCaption}\item[{int}]{user\+\_\+id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classfood__ordering_1_1_database_a3943a37a2d102548fc5e5f598bdce2ac}\label{classfood__ordering_1_1_database_a3943a37a2d102548fc5e5f598bdce2ac}} 
+\index{food\_ordering.Database@{food\_ordering.Database}!insert@{insert}}
+\index{insert@{insert}!food\_ordering.Database@{food\_ordering.Database}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily boolean food\+\_\+ordering.\+Database.\+insert (\begin{DoxyParamCaption}\item[{String}]{tablename,  }\item[{String\mbox{[}$\,$\mbox{]}}]{datakey,  }\item[{String\mbox{[}$\,$\mbox{]}}]{datavalue }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classfood__ordering_1_1_database_a28503ba4f6b4a1e9af4808562e4948b2}\label{classfood__ordering_1_1_database_a28503ba4f6b4a1e9af4808562e4948b2}} 
+\index{food\_ordering.Database@{food\_ordering.Database}!verifyData@{verifyData}}
+\index{verifyData@{verifyData}!food\_ordering.Database@{food\_ordering.Database}}
+\doxysubsubsection{\texorpdfstring{verifyData()}{verifyData()}}
+{\footnotesize\ttfamily Boolean food\+\_\+ordering.\+Database.\+verify\+Data (\begin{DoxyParamCaption}\item[{String}]{tablename,  }\item[{String\mbox{[}$\,$\mbox{]}}]{datakey,  }\item[{String\mbox{[}$\,$\mbox{]}}]{datavalue }\end{DoxyParamCaption})}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/main/java/food\+\_\+ordering/Database.\+java\end{DoxyCompactItemize}
+main/java/food\+\_\+ordering/\mbox{\hyperlink{_database_8java}{Database.\+java}}\end{DoxyCompactItemize}
