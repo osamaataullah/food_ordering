@@ -18,4 +18,7 @@ The Online Food Ordering system is a console based application designed using OO
 ## Setup Instructions
 - Ensure that JDK8+ is installed.
 - Add the SQLite JDBC library to project classpath.
-- Run the application in any Java IDE.  
+- Run the application in any Java IDE.
+
+## Link of Video Explanation of the project
+- https://drive.google.com/file/d/1q6pehPvx2OAP-JQwy6pfhsmLayYKQ5JF/view?usp=sharing
