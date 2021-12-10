@@ -25,6 +25,7 @@ public class Menu {
 
     // displays menu from restaurants in the same city in which user is.
     public void view_menu(int res_id) {
+        /*function to view the menu of a particular resturant*/
         PreparedStatement mystmt = null;
         ResultSet rs = null;
         try {
@@ -56,6 +57,7 @@ public class Menu {
     }
 
     public void itemSelection() {
+        /*function to select a item*/
         Scanner sc = new Scanner(System.in);
 
         while (true) {

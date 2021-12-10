@@ -39,6 +39,7 @@ public class Ratings {
     }
 
     public void rate_items() {
+        /*function to rate items*/
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < items_delivered_name.size(); i++) {

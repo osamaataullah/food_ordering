@@ -3,6 +3,7 @@ package food_ordering;
 public class Registration {
 
     public void createNewUser() {
+        /*function to create new user*/
         System.out.println("Enter Your Name");
         String name = App.sc.next();
         System.out.println("Enter Your Email");

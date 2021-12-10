@@ -32,6 +32,7 @@ public class Cart {
     }
 
     public void add_to_cart(List<Integer> item_num, List<Integer> item_qty) {
+        /*function to add an item to cart*/
         try {
             String query = "insert into orders(user_id,menu_id,quantity,order_status,timestamp) values(?,?,?,'ADDED_TO_CART',time('now','localtime'))";
             PreparedStatement ps = myconn.prepareStatement(query);
@@ -52,6 +53,7 @@ public class Cart {
     }
 
     public void display_cart() {
+        /*function to display the items in the cart*/
         System.out.println("Loading your cart...");
         String query = "select m.estimated_time, o.menu_id, m.menu_name, o.quantity, o.quantity * m.price  from orders as o inner join menu as m on o.menu_id = m.menu_id  and o.order_status = 'ADDED_TO_CART' and o.user_id ="
                 + Login.user_id;
@@ -109,6 +111,7 @@ public class Cart {
     }
 
     public void discard_all() {
+        /*function to delete all items*/
         String query = "delete from orders where user_id = ? and order_status = 'ADDED_TO_CART'";
         try {
             PreparedStatement ps = myconn.prepareStatement(query);
@@ -122,6 +125,7 @@ public class Cart {
     }
 
     public void remove_items() {
+        /*function to remove a specific item*/
         List<Integer> ids = new ArrayList<>();
         while (true) {
             System.out.println("Enter item id (menu_id) to remove.");

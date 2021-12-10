@@ -46,6 +46,7 @@ public class DoPayment {
     }
 
     private void verifyPayment(boolean payment_done) {
+        /*function to verify the payment*/
         System.out.println("Processing Your Payment...");
         try {
             Thread.sleep(1000 * 10);

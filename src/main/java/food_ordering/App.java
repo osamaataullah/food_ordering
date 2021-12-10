@@ -13,6 +13,7 @@ public class App {
     }
 
     public static void viewMainPanel() {
+        /*Function to display main panel to user*/
         System.out.println("Welcome to Food Ordering System");
         System.out.println("1. Login \n2. Register");
 

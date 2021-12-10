@@ -7,6 +7,7 @@ public class Login extends User {
     Database mydb = new Database();
 
     public void login() {
+        /*Function for login of the user */
         Scanner sc = new Scanner(System.in);
         System.out.println("Please Enter Your Email");
         String email = sc.nextLine();
@@ -51,6 +52,7 @@ public class Login extends User {
     }
 
     public void mainMenuPanel() {
+        /*Function to display the menu panel*/
         System.out.println("Select One of the option below");
         System.out.println("1. See Restaurants in your city\n2. Go To Your Cart\n3. Go To Your wishlist");
         int input = App.sc.nextInt();

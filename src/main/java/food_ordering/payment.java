@@ -7,6 +7,7 @@ public class payment {
     Connection myconn = Database.connector();
 
     public int Calculate_Bill() {
+        /*function to calculate the amount to be paid*/
         int tcost = 0;
         try {
 
@@ -68,6 +69,7 @@ public class payment {
     }
 
     private int calculate_delivery_charges() {
+        /*function to calculate delivery charges according to the distance*/
         Connection myconn1 = Database.connector();
         String restaurant_area = "";
         String user_area = "";
