@@ -8,8 +8,8 @@ The Online Food Ordering system is a console based application designed using OO
 - The bill is calculated dynamically based on food items ordered and distance between user and restaurant.
 - Bill payment can be done using any online methods - UPI, Credit/Debit Card.
 - Successful orders can be tracked for time remaining in delivery and can be cancelled if the order is delayed.
-![screenshot1](https://github.com/osamaataullah/oopd_project/blob/main/login.png?raw=true) <br />
-![screenshot1](https://github.com/osamaataullah/oopd_project/blob/main/restaurants_menu.png?raw=true)
+![screenshot1](https://github.com/osamaataullah/food_ordering/blob/7f81d52c58e333f2626a567d42eec25ee8522be7/screenshots/login.png) <br />
+![screenshot1](https://github.com/osamaataullah/food_ordering/blob/7f81d52c58e333f2626a567d42eec25ee8522be7/screenshots/restaurants_menu.png)
 
 ## Technologies
 - [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) - An object oriented language in which the system is built
