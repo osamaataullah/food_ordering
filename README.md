@@ -21,4 +21,4 @@ The Online Food Ordering system is a console based application designed using OO
 - Run the application in any Java IDE.
 
 ## Link of Video Explanation of the project
-- https://drive.google.com/file/d/1q6pehPvx2OAP-JQwy6pfhsmLayYKQ5JF/view?usp=sharing
+- [Click here](https://drive.google.com/file/d/1q6pehPvx2OAP-JQwy6pfhsmLayYKQ5JF/view?usp=sharing)
