@@ -1,5 +1,5 @@
-# Online Food Ordering System
-The Online Food Ordering system is a console based application designed using OOPS concepts. It allows users to register an account, order their favourite delicacies from nearby restaurants and even track their order.
+# Food Ordering System
+The Food Ordering system is a console based application designed using OOPS concepts. It allows users to register an account, order their favourite delicacies from nearby restaurants and even track their order.
 
 ## Features
 - Users can register using their credentials which is used for login/Authentication.
